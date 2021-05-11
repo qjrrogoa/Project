@@ -52,33 +52,36 @@
 			</div>
 		</div><!-- row -->	
 		<div class="row">
-			<div class="col-md-offset-2 col-md-8">
+			<div class="col-md-offset-2 col-md-8 table-responsive">
 				<table class="table table-bordered table-striped">
 					<tr>
 						<th class="col-md-2 text-center">번 호</th>
 						<td>${dto.no }</td>
+						<th class="col-md-2 text-center">좋아요</th>
+						<td>${dto.no }</td>
+						
 					</tr>
 					<tr>
 						<th class="text-center">제 목</th>
-						<td>${dto.title }</td>
+						<td colspan="3">${dto.title }</td>
 					</tr>
 					<tr>
 						<th class="text-center">작성자</th>
-						<td>${dto.name}</td>
+						<td colspan="3">${dto.name}</td>
 					</tr>
 					<tr>
 						<th class="text-center">다녀온 곳</th>
-						<td id="downcount">${dto.downCount}</td>
+						<td colspan="3" id="downcount">${dto.downCount}</td>
 					</tr>
 					<tr>
 						<th class="text-center">등록일</th>
-						<td>${dto.postDate}</td>
+						<td colspan="3">${dto.postDate}</td>
 					</tr>
 					<tr>
-						<th class="text-center" colspan="2">내 용</th>					
+						<th class="text-center" colspan="4">내 용</th>					
 					</tr>
 					<tr>
-						<td colspan="2">${dto.content }</td>					
+						<td colspan="4">${dto.content }</td>					
 					</tr>
 				</table>
 			</div>
@@ -95,7 +98,7 @@
 			</div>
 		</div><!-- row -->	
 	<hr>
-	<form class="form-horizontal">
+			<form class="form-horizontal">
 				<div class="form-group"><!-- <div class="row">와 같다 -->
 					<!--  label에 control-label도 함께:가운데 수직 정렬 -->
 					<label class="col-sm-2 control-label" >댓글</label>
@@ -103,11 +106,38 @@
 						<input type="text" class="form-control" placeholder="댓글을 달아주세요!">
 					</div>
 					<div class="col-sm-4">
-						<button  class="btn btn-primary">등록</button>
+						<button type="submit" class="btn btn-primary">등록</button>
 					</div>
 				</div>
 			</form>
-					
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover table-condensed">
+				<!-- 테이블 컬럼폭은 col-*-*계열로 설정 -->
+				<tr>
+					<th class="text-center col-md-1">작성자</th>
+					<th class="text-left">댓글</th>
+					<th class="text-center col-md-2">등록일</th>
+					<th class="text-center col-md-1">좋아요</th>
+				</tr>
+				<c:if test="${empty list }" var="isEmpty">
+					<tr class="text-center">
+						<td colspan="6">등록된 댓글이 없습니다</td>					
+					</tr>
+				</c:if>
+				<c:if test="${not  isEmpty}">
+					<c:forEach var="item" items="${list}" varStatus="loop">
+						<tr>
+							<td class="text-center col-md-1">${totalRecordCount - (((nowPage - 1) * pageSize) + loop.index)}</td>
+							<td class="text-left"><a href="<c:url value="/DataRoom/View.kosmo?no=${item.no}&nowPage="/><c:out value='${param.nowPage}' default='1'/>">${item.title}</a></td>
+							<td class="text-center col-md-1">${item.name}</td>
+							<td class="text-center col-md-2">${item.postDate }</td>
+							<td class="text-center col-md-2">${item.postDate }</td>
+						</tr>
+					</c:forEach>
+				</c:if>
+			</table>
+		</div>
+		
 	</div><!-- container -->
 	
 	<!-- 수정/삭제시 사용할 모달 시작 -->
