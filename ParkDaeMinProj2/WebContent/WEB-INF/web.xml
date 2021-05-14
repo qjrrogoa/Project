@@ -1,74 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>ParkDaeMinProj2</display-name>
+  
+  
+ 
+  
   <servlet>
-    <servlet-name>DataRoomIndex</servlet-name>
-    <servlet-class>controller.dataroom.IndexController</servlet-class>
+  	<servlet-name>PDMUlsan</servlet-name>
+  	<servlet-class>controller.pdm.UlsanController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DataRoomIndex</servlet-name>
-    <url-pattern>/DataRoom/Index.kosmo</url-pattern>
+  	<servlet-name>PDMUlsan</servlet-name>
+  	<url-pattern>/PDM/Ulsan.kosmo</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <servlet-name>DataRoomList</servlet-name>
-    <servlet-class>controller.dataroom.ListController</servlet-class>
-    <init-param>
-      <param-name>PAGE_SIZE</param-name>
-      <param-value>10</param-value>
-    </init-param>
-    <init-param>
-      <param-name>BLOCK_PAGE</param-name>
-      <param-value>5</param-value>
-    </init-param>
+  	<servlet-name>PDMIndex</servlet-name>
+  	<servlet-class>controller.pdm.IndexController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DataRoomList</servlet-name>
-    <url-pattern>/DataRoom/List.kosmo</url-pattern>
+  	<servlet-name>PDMIndex</servlet-name>
+  	<url-pattern>/PDM/Index.kosmo</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <servlet-name>DataRoomWrite</servlet-name>
-    <servlet-class>controller.dataroom.WriteController</servlet-class>
+  	<servlet-name>PDMLogin</servlet-name>
+  	<servlet-class>controller.pdm.LoginController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DataRoomWrite</servlet-name>
-    <url-pattern>/DataRoom/Write.kosmo</url-pattern>
+  	<servlet-name>PDMLogin</servlet-name>
+  	<url-pattern>/PDM/Login.kosmo</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <servlet-name>DataRoomView</servlet-name>
-    <servlet-class>controller.dataroom.ViewController</servlet-class>
+  	<servlet-name>PDMLogout</servlet-name>
+  	<servlet-class>controller.pdm.LogoutController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DataRoomView</servlet-name>
-    <url-pattern>/DataRoom/View.kosmo</url-pattern>
+  	<servlet-name>PDMLogout</servlet-name>
+  	<url-pattern>/PDM/Logout.kosmo</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <servlet-name>DataRoomPassword</servlet-name>
-    <servlet-class>controller.dataroom.PasswordController</servlet-class>
+  	<servlet-name>PDMMembership</servlet-name>
+  	<servlet-class>controller.pdm.MembershipController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DataRoomPassword</servlet-name>
-    <url-pattern>/DataRoom/Password.kosmo</url-pattern>
+  	<servlet-name>PDMMembership</servlet-name>
+  	<url-pattern>/PDM/Membership.kosmo</url-pattern>
   </servlet-mapping>
+  
   <servlet>
-    <servlet-name>DataRoomEdit</servlet-name>
-    <servlet-class>controller.dataroom.EditController</servlet-class>
+  	<servlet-name>PDMCheck</servlet-name>
+  	<servlet-class>controller.pdm.CheckController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DataRoomEdit</servlet-name>
-    <url-pattern>/DataRoom/Edit.kosmo</url-pattern>
+  	<servlet-name>PDMCheck</servlet-name>
+  	<url-pattern>/PDM/Check.kosmo</url-pattern>
   </servlet-mapping>
+  
+  
   <servlet>
-    <servlet-name>DataRoomDownload</servlet-name>
-    <servlet-class>controller.dataroom.DownloadController</servlet-class>
+  	<servlet-name>PDMMypage</servlet-name>
+  	<servlet-class>controller.pdm.MypageController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DataRoomDownload</servlet-name>
-    <url-pattern>/DataRoom/Download.kosmo</url-pattern>
+  	<servlet-name>PDMMypage</servlet-name>
+  	<url-pattern>/PDM/Mypage.kosmo</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>PDMList</servlet-name>
+  	<servlet-class>controller.pdm.ListController</servlet-class>
+  	<init-param>
+		<param-name>PAGE_SIZE</param-name>
+		<param-value>10</param-value>  	
+  	</init-param>
+  	<init-param>
+		<param-name>BLOCK_PAGE</param-name>
+		<param-value>10</param-value>  	
+  	</init-param>
+  </servlet>
+   
+  <servlet-mapping>
+  	<servlet-name>PDMList</servlet-name>
+  	<url-pattern>/PDM/List.kosmo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>PDMWrite</servlet-name>
+  	<servlet-class>controller.pdm.WriteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PDMWrite</servlet-name>
+  	<url-pattern>/PDM/Write.kosmo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>PDMView</servlet-name>
+  	<servlet-class>controller.pdm.ViewController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PDMView</servlet-name>
+  	<url-pattern>/PDM/View.kosmo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>PDMPassword</servlet-name>
+  	<servlet-class>controller.pdm.PasswordController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PDMPassword</servlet-name>
+  	<url-pattern>/PDM/Password.kosmo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>PDMEdit</servlet-name>
+  	<servlet-class>controller.pdm.EditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PDMEdit</servlet-name>
+  	<url-pattern>/PDM/Edit.kosmo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>PDMMemberEdit</servlet-name>
+  	<servlet-class>controller.pdm.MemberEditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PDMMemberEdit</servlet-name>
+  	<url-pattern>/PDM/MemberEdit.kosmo</url-pattern>
+  </servlet-mapping>
+  
+  <context-param>
+  	<param-name>JNDI_ROOT</param-name>
+  	<param-value>java:comp/env</param-value>
+  </context-param>
+  
   <welcome-file-list>
+      <welcome-file>index.jsp</welcome-file>
+  
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
