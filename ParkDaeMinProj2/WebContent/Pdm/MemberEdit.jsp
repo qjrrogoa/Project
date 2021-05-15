@@ -51,7 +51,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label" >이름</label>
 						<div class="col-sm-4">
-							<input type="text" name="name" class="form-control" placeholder="이름">
+							<input type="text" name="name" class="form-control" placeholder="이름" value="${dto.name }"/>
 						</div>
 					</div>
 					

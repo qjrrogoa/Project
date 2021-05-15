@@ -9,6 +9,10 @@
 		<c:set var="failsMsg" value="입력 실패했어요"/>
 		<c:set var="successUrl" value="/PDM/List.kosmo"/>
 	</c:when>
+	<c:when test="${WHERE == 'LOG'}">
+		<c:set var="failsMsg" value="로그인 실패했어요"/>
+		<c:set var="successUrl" value="/PDM/Login.kosmo"/>
+	</c:when>
 	<c:when test="${WHERE == 'EDT'}">
 		<c:set var="successMsg" value="수정 성공했어요"/>
 		<c:set var="failsMsg" value="수정 실패했어요"/>

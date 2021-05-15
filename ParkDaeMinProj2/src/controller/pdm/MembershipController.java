@@ -38,7 +38,7 @@ public class MembershipController extends HttpServlet{
 		String intro = req.getParameter("intro");
 		
 
-		MemberDTO dto = new MemberDTO(id, password, name, gender, inter, grade, intro, null);
+		MemberDTO dto = new MemberDTO(id, password, name, gender, inter, grade, intro,null);
 		BBSDAO dao = new BBSDAO(req.getServletContext());
 		
 		int affected = dao.Membership(dto);

@@ -43,7 +43,7 @@ public class BBSDAO {
 	
 	public int Membership(MemberDTO dto) {
 		int affected=0;
-		String sql ="insert into member values(?,?,?,?,?,?,?,?)";
+		String sql ="insert into member values(?,?,?,?,?,?,?,DEFAULT)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getId());
@@ -53,7 +53,6 @@ public class BBSDAO {
 			psmt.setString(5, dto.getInter());
 			psmt.setString(6, dto.getGrade());
 			psmt.setString(7, dto.getIntro());
-			psmt.setDate(8, dto.getRegidate());
 			affected = psmt.executeUpdate();
 		}
 		catch(SQLException e ) {
@@ -247,7 +246,7 @@ public class BBSDAO {
 		return affected;
 	}
 	public int MemberEdit(MemberDTO dto) {
-		String sql="update bbs set password=?, name=?, gender=? inter=? grade=? intro=? where id=?";
+		String sql="update member set password=?, name=?, gender=?, inter=?, grade=?, intro=? where id=?";
 		int affected=0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -266,4 +265,29 @@ public class BBSDAO {
 		}
 		return affected;
 	}
+	public MemberDTO Mypage(String id) {
+		String sql = "select * FROM member where id=?";
+		MemberDTO dto=null;
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs=psmt.executeQuery();
+			if(rs.next()) {
+			dto = new MemberDTO();
+			dto.setId(rs.getString(1));
+			dto.setName(rs.getString(3));
+			dto.setgender(rs.getString(4));
+			dto.setInter(rs.getString(5));
+			dto.setGrade(rs.getString(6));
+			dto.setIntro(rs.getString(7));
+			dto.setRegidate(rs.getDate(8));
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+
 }

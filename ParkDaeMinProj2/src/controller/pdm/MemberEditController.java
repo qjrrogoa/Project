@@ -35,12 +35,20 @@ public class MemberEditController extends HttpServlet {
 		String grade = req.getParameter("grade");
 		String intro = req.getParameter("intro");
 		
+		System.out.println(id);
+		System.out.println(password);
+		System.out.println(name);
+		System.out.println(gender);
+		System.out.println(inter);
+		System.out.println(grade);
+		System.out.println(intro);
 
 		MemberDTO dto = new MemberDTO(id, password, name, gender, inter, grade, intro, null);
 		BBSDAO dao = new BBSDAO(req.getServletContext());
 		
 		int affected = dao.MemberEdit(dto);
+		System.out.println(affected);
 		dao.close();
-		req.getRequestDispatcher("/Pdm/Mypage.jsp").forward(req, resp);
+		req.getRequestDispatcher("/Pdm/Main.jsp").forward(req, resp);
 	}
 }

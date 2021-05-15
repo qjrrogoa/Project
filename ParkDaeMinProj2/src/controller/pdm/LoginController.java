@@ -37,7 +37,9 @@ public class LoginController extends HttpServlet{
 				req.getSession().setAttribute("user",id);
 			}
 			else {
-				req.getRequestDispatcher("/Pdm/Login.jsp").forward(req, resp);
+				req.setAttribute("WHERE", "LOG");
+				req.setAttribute("SUCCFAIL",0);
+				req.getRequestDispatcher("/Pdm/Message.jsp").forward(req, resp);
 			}
 		}
 }

@@ -154,8 +154,6 @@
 
 	$("#check").on("click",function(){
 		var value = $('#id').val();
-		console.log(value);
-
 		$.ajax({
 			url:"/ParkDaeMinProj2/PDM/Check.kosmo",
 			type:"POST",
@@ -172,7 +170,6 @@
 				}
 			}
 		})
-		
 	});
 	
 	/*

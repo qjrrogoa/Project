@@ -75,6 +75,9 @@
 					</c:forEach>
 				</c:if>
 			</table>
+			<div class="text-center">
+         ${pagingString }
+      		</div>
 		</div>
 			<div class="modal fade" id="small-modal" data-backdrop="static">
 		   		<div class="modal-dialog modal-sm">

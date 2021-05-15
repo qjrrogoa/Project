@@ -142,27 +142,20 @@
 					focusObject= $(this).get(0).title;
 					return false;
 				}
-				if(fileObj.value==""){		
-					
-					$('#warningMessage').html("파일을 첨부하세요");
-					$('#small-modal').modal('show');
-					focusObject= $(this).get(0).attachFile;
-					return false;
-				}
-				/*
-				else{//파일을 첨부한 경우:파일 업로드 최대 용량 체크
+				
+				
+				if{//파일을 첨부한 경우:파일 업로드 최대 용량 체크
 					//파일관련 정보 자스로 얻기					
 					console.log("파일 크기:",fileObj.files[0].size);
 					console.log("파일명:",fileObj.files[0].name);
 					console.log("컨텐츠 타입(MIME):",fileObj.files[0].type);
-					if(fileObj.files[0].size > 500 *1024){
+					if(fileObj.files[0].size > 10000 *1024){
 						$('#warningMessage').html("업로드 최대용량(500KB)을 초과 했어요");
 						$('#small-modal').modal('show');
 						focusObject= fileObj;
 						return false;						
 					}
 					
-				}*/
 				
 				if($('input[type=password]').val()==""){
 					$('#warningMessage').html("비밀번호를 입력하세요");
