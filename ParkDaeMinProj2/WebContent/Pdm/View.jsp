@@ -49,19 +49,16 @@
 						<th class="col-md-2 text-center">번 호</th>
 						<td>${dto.no }</td>
 						<th class="col-md-2 text-center">조회수</th>
-						<td class="col-md-2 text-center">0</td>
-						<th class="col-md-2 text-center">좋아요</th>
-						<td class="col-md-2 text-center">0</td>
+						<td class="col-md-2 text-center">${dto.visitcount }</td>
+						<th class="text-center">작성자</th>
+						<td class="text-center">${dto.id}</td>
 						
 					</tr>
 					<tr>
 						<th class="text-center">제 목</th>
 						<td colspan="5">${dto.title }</td>
 					</tr>
-					<tr>
-						<th class="text-center">작성자</th>
-						<td colspan="5">${dto.id}</td>
-					</tr>
+					
 					<tr>
 						<th class="text-center">다녀온 곳</th>
 						<td colspan="5" id="downcount">${dto.trip}</td>
@@ -87,8 +84,7 @@
 					<!-- confirm창에서 취소시에는 모달창이 뜨지 않도록 data-toggle="moda" 제거 그리고 자스로 제어해서 모달창을 띄운다(삭제 확인버튼 클릭시에만) -->
 					<li><a href="#" class="btn btn-success" data-target="#passwordModal">삭제</a></li>
 				</c:if>
-					<li><a href="<c:url value="/PDM/List.kosmo?"/>" class="btn btn-success">목록</a></li>
-					
+					<li style="padding-right: 0%"><a href="<c:url value="/PDM/List.kosmo?"/>" class="btn btn-success">목록</a></li>
 				</ul>
 			</div>
 		</div><!-- row -->	
@@ -101,35 +97,31 @@
 					<th class="text-center col-md-1">작성자</th>
 					<th class="text-left">댓글</th>
 					<th class="text-center col-md-2">등록일</th>
-					<th class="text-center col-md-1">좋아요</th>
 				</tr>
 				<c:if test="${empty list }" var="isEmpty">
 					<tr class="text-center">
 						<td colspan="6">등록된 댓글이 없습니다</td>					
 					</tr>
 					
-		
 				</c:if>
 				<c:if test="${not  isEmpty}">
 					<c:forEach var="item" items="${list}" varStatus="loop">
 						<tr>
-							<td class="text-center col-md-1">${totalRecordCount - (((nowPage - 1) * pageSize) + loop.index)}</td>
-							<td class="text-left"><a href="<c:url value="/DataRoom/View.kosmo?no=${item.no}&nowPage="/><c:out value='${param.nowPage}' default='1'/>">${item.title}</a></td>
-							<td class="text-center col-md-1">${item.name}</td>
-							<td class="text-center col-md-2">${item.postDate }</td>
-							<td class="text-center col-md-2">${item.postDate }</td>
+							<td class="text-center col-md-1">${item.id }</td>
+							<td class="text-left">${item.comments }</td>
+							<td class="text-center col-md-1">${item.regidate }</td>
 						</tr>
 					</c:forEach>
 				</c:if>
 			</table>
 		</div>
 		
-			<form class="form-horizontal">
+			<form class="form-horizontal" method="post" action="<c:url value="/PDM/Commets.kosmo?no=${dto.no }"/>">
 				<div class="form-group"><!-- <div class="row">와 같다 -->
 					<!--  label에 control-label도 함께:가운데 수직 정렬 -->
-					<label class="col-sm-2 control-label" >댓글</label>
+					<label class="col-sm-2 control-label">댓글</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" placeholder="댓글을 달아주세요!">
+						<input type="text" class="form-control" name="comments" placeholder="댓글을 달아주세요!">
 					</div>
 					<div class="col-sm-4">
 						<button type="submit" class="btn btn-primary">등록</button>

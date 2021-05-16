@@ -289,5 +289,47 @@ public class BBSDAO {
 		
 		return dto;
 	}
+	
+	public int CommentsInsert(CommentsDTO cdto) {
+		int affected=0;
+		String sql="Insert into comments values(seq_comm.NEXTVAL,?,?,?,DEFAULT)";
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, cdto.getId());
+			psmt.setString(2, cdto.getNo());
+			psmt.setString(3, cdto.getComments());
+			affected = psmt.executeUpdate();
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return affected;
+	}
+	
+	public List<CommentsDTO> CommentsSelectList(String no) {
+		 List<CommentsDTO> list = new Vector<CommentsDTO>();
+		 String sql="Select * from comments where no=?";
+		 try {
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1, no);
+			 rs=psmt.executeQuery();
+			 while(rs.next()) {
+				 CommentsDTO cdto = new CommentsDTO();
+				 cdto.setCommentsno(rs.getString(1));
+				 cdto.setId(rs.getString(2));
+				 cdto.setNo(rs.getString(3));
+				 cdto.setComments(rs.getString(4));
+				 cdto.setRegidate(rs.getDate(5));
+				 list.add(cdto);
+			 }
+		 }
+		 catch(SQLException e){
+			 e.printStackTrace();
+		 }
+		return list;
+	}
+	
+	
+
 
 }

@@ -132,6 +132,15 @@
   	<url-pattern>/PDM/MemberEdit.kosmo</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>PDMCommets</servlet-name>
+  	<servlet-class>controller.pdm.CommetsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PDMCommets</servlet-name>
+  	<url-pattern>/PDM/Commets.kosmo</url-pattern>
+  </servlet-mapping>
+  
   
   <context-param>
   	<param-name>JNDI_ROOT</param-name>

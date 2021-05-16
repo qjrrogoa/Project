@@ -29,9 +29,6 @@ public class LoginController extends HttpServlet{
 			BBSDAO dao = new BBSDAO(req.getServletContext());
 
 			boolean flag = dao.IsMember(id,password);
-			System.out.println(id);
-			System.out.println(password);
-			System.out.println(flag);
 			if(flag==true) {
 				resp.sendRedirect(req.getContextPath()+"/Pdm/Main.jsp");
 				req.getSession().setAttribute("user",id);

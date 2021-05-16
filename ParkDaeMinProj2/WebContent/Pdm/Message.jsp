@@ -22,9 +22,13 @@
 		<c:set var="failsMsg" value="이미지 파일만 업로드 하세요"/>
 		<c:set var="successUrl" value="/PDM/Write.kosmo"/>
 	</c:when>
-		<c:when test="${WHERE == 'WRI'}">
+	<c:when test="${WHERE == 'WRI'}">
 		<c:set var="failsMsg" value="로그인후 이용하세요"/>
 		<c:set var="successUrl" value="/PDM/List.kosmo"/>
+	</c:when>
+	<c:when test="${WHERE == 'COMM'}">
+		<c:set var="failsMsg" value="로그인후 이용하세요"/>
+		<c:set var="successUrl" value="/PDM/View.kosmo?no=${no}"/>
 	</c:when>
 	<c:otherwise>
 		<c:set var="successMsg" value="삭제 성공했어요"/>

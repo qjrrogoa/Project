@@ -40,6 +40,7 @@
 						<input type="text" class="form-control" name="title" placeholder="제목을 입력하세요">
 					</div>
 				</div>
+				
 				<div class="form-group">
 						<label class="col-sm-2 control-label">다녀온 곳</label>
 						<div class="col-sm-3">
@@ -56,10 +57,11 @@
 							</select>						
 						</div>
 					</div>
+					
 				<div class="form-group">				
 					<label class="col-sm-2 control-label">파일 업로드</label>
 					<div class="col-sm-8">
-						<input type="file" name="attachFile">
+						<input type="file" name="attachfile">
 						<p class="help-block">이미지 파일을 첨부하세요</p>
 				</div>
 				
@@ -128,7 +130,7 @@
 			
 			$("#myform").on("submit",function(){
 				//자스 DOM으로 input type="file" 얻기
-				var fileObj = $(this).get(0).attachFile;
+				var fileObj = $(this).get(0).attachfile;
 				
 				if($(this).get(0).name.value==""){
 					$('#warningMessage').html("이름을 입력하세요");
@@ -143,26 +145,14 @@
 					return false;
 				}
 				
-				
-				if{//파일을 첨부한 경우:파일 업로드 최대 용량 체크
-					//파일관련 정보 자스로 얻기					
-					console.log("파일 크기:",fileObj.files[0].size);
-					console.log("파일명:",fileObj.files[0].name);
-					console.log("컨텐츠 타입(MIME):",fileObj.files[0].type);
-					if(fileObj.files[0].size > 10000 *1024){
-						$('#warningMessage').html("업로드 최대용량(500KB)을 초과 했어요");
-						$('#small-modal').modal('show');
-						focusObject= fileObj;
-						return false;						
-					}
-					
-				
-				if($('input[type=password]').val()==""){
-					$('#warningMessage').html("비밀번호를 입력하세요");
+				if(fileObj.value==""){		
+					$('#warningMessage').html("파일을 첨부하세요");
 					$('#small-modal').modal('show');
-					focusObject= $('input[type=password]');
+					focusObject= $(this).get(0).attachfile;
 					return false;
 				}
+				
+				
 				if($('textarea').val()==""){
 					$('#warningMessage').html("내용을 입력하세요");
 					$('#small-modal').modal('show');
