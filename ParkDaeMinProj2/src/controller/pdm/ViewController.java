@@ -24,18 +24,14 @@ public class ViewController extends HttpServlet {
 		String referer=req.getHeader("referer");
 		int beginIndex=referer.lastIndexOf("/")+1;
 		String prevPage = referer.substring(beginIndex);
-		System.out.println(prevPage);
 		//조회수 업데이트 및 상세보기
 		BBSDTO dto= dao.SelectOne(no,prevPage);
 		
-		String comments = req.getParameter("comments");
 		
 		CommentsDTO cdto = new CommentsDTO();
-		int affected = dao.CommentsInsert(cdto);
 		List list = dao.CommentsSelectList(no);	
 		req.setAttribute("list",list);
 		dao.close();
-		dto.setContent(dto.getContent().replace("\r\n","<br/>"));
 		req.setAttribute("dto", dto);
 		req.getRequestDispatcher("/Pdm/View.jsp").forward(req, resp);
 	}

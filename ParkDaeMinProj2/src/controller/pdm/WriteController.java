@@ -32,13 +32,12 @@ public class WriteController extends HttpServlet {
 				req.setCharacterEncoding("UTF-8");
 				MultipartRequest mr= FileUtils.upload(req,req.getServletContext().getRealPath("/Upload"));
 				int successOrFail;
-				if(mr !=null) {//파일 업로드 성공일때 DB 입력처리]
+				if(mr !=null) {
 					String id = req.getSession().getAttribute("user").toString();
 					String title = mr.getParameter("title");
 					String content = mr.getParameter("content");
 					String trip = mr.getParameter("trip");
 					String attachfile = mr.getFilesystemName("attachfile");
-					//데이타베이스 CRUD작업과 관련된 모델 호출]
 					BBSDAO dao = new BBSDAO(req.getServletContext());
 					BBSDTO dto = new BBSDTO();
 					dto.setId(id);
@@ -65,7 +64,6 @@ public class WriteController extends HttpServlet {
 					successOrFail = -1;
 				}
 			
-				//5]리퀘스트 영역에 결과값 혹은 필요한 값 저장
 				req.setAttribute("SUCCFAIL",successOrFail);
 				req.setAttribute("WHERE","INS");
 				req.getRequestDispatcher("/Pdm/Message.jsp").forward(req, resp);

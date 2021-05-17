@@ -52,14 +52,6 @@
 					
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-4">
-							<div class="checkbox">
-								<label><input type="checkbox"/>아이디 저장</label>
-							</div>	
-						</div>				
-					</div>
-					
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-4">
 							<button type="submit" class="btn btn-primary">로그인</button>
 						</div>
 					</div>

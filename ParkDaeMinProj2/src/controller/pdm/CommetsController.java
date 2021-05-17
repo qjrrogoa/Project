@@ -15,22 +15,21 @@ import model.pdm.CommentsDTO;
 
 public class CommetsController extends HttpServlet {
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+		
 		if(req.getSession().getAttribute("user") == null) {
 			req.setAttribute("SUCCFAIL",0);
-			//5-2]컨트롤러 구분용-입력:INS,수정:EDT,삭제:DEL
 			req.setAttribute("WHERE","COMM");
 			req.getRequestDispatcher("/Pdm/Message.jsp").forward(req, resp);
 		}
+		
 		String no = req.getParameter("no");
 		BBSDAO dao = new BBSDAO(getServletContext());
 		String referer=req.getHeader("referer");
 		int beginIndex=referer.lastIndexOf("/")+1;
 		String prevPage = referer.substring(beginIndex);
-		//조회수 업데이트 및 상세보기
 		BBSDTO dto= dao.SelectOne(no,prevPage);
-		
 		
 		dto.setContent(dto.getContent().replace("\r\n","<br/>"));
 		req.setAttribute("dto", dto);
@@ -38,13 +37,30 @@ public class CommetsController extends HttpServlet {
 		String id = req.getSession().getAttribute("user").toString();
 		String comments = req.getParameter("comments");
 		
-		CommentsDTO cdto = new CommentsDTO();
-		int affected = dao.CommentsInsert(cdto);
-		List list = dao.CommentsSelectList(no);	
 		
-		req.setAttribute("list",list);
+		
+		CommentsDTO cdto = new CommentsDTO();
+		cdto.setNo(no);
+		cdto.setId(id);
+		cdto.setComments(comments);
+		int affected = dao.CommentsInsert(cdto);
+
+		
+		List list = dao.CommentsSelectList(no);	
+		if(affected==1) {
+			req.setAttribute("no",no);
+			req.setAttribute("list",list);
+			req.setAttribute("WHERE","COMM" );
+			req.setAttribute("SUCCFAIL", "1");
+			req.getRequestDispatcher("/Pdm/Message.jsp").forward(req, resp);
+		}
+		else {
+			req.setAttribute("no",no);
+			req.setAttribute("WHERE","COMM" );
+			req.setAttribute("SUCCFAIL", "-1");
+			req.getRequestDispatcher("/Pdm/Message.jsp").forward(req, resp);
+		}
 		dao.close();
-		req.getRequestDispatcher("/Pdm/View.jsp").forward(req, resp);
 	}
 
 }

@@ -105,7 +105,6 @@
 	<!-- 실제 내용 끝 -->
 	
 	<!--  푸터 시작 -->
-	<jsp:include page="/Template/DataRoomFooter.jsp" />
 	<!-- 푸터 끝 -->
 	<script>
 		/*    	

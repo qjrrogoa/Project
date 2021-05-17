@@ -45,69 +45,86 @@
 			</ul>
 				<!-- Wrapper for slides -->
 					<div class="carousel-inner">
+					
 						<div class="item active">
-							<a href="https://www.nate.com">						
-							<img src="../Images/1.jpg" alt="태화강 국가정원과 십리대밭" style="width:100%;height:400px"/>
-							<div class="carousel-caption">
-								<h2>태화강 국가정원과 십리대밭</h2>
-							</div>
+							<a href="https://www.ulsan.go.kr/garden">						
+								<img src="../Images/1.jpg" alt="태화강 국가정원과 십리대밭" style="width:100%;height:400px"/>
+									<div class="carousel-caption">
+										<h2>태화강 국가정원과 십리대밭</h2>
+									</div>
 							</a>						
 						</div>
 					
 					<div class="item">
-						<img src="../Images/2.jpg" alt="대왕암 공원" style="width:100%;height:400px"/>
-						<div class="carousel-caption">
-							<h2>대왕암 공원</h2>
-						</div>
+						<a href="http://daewangam.donggu.ulsan.kr">						
+							<img src="../Images/2.jpg" alt="대왕암 공원" style="width:100%;height:400px"/>
+								<div class="carousel-caption">
+									<h2>대왕암 공원</h2>
+								</div>
+						</a>
 					</div>
 					
 					<div class="item">
-						<img src="../Images/3.jpg" alt="간절곶" style="width:100%;height:400px"/>
-						<div class="carousel-caption">
-							<h2>간절곶</h2>
-						</div>
+						<a href="https://tour.ulju.ulsan.kr/">						
+							<img src="../Images/3.jpg" alt="간절곶" style="width:100%;height:400px"/>
+								<div class="carousel-caption">
+									<h2>간절곶</h2>
+								</div>
+						</a>
 					</div>
 					
 					<div class="item">
-						<img src="../Images/4.jpg" alt="강동 주전 몽돌해변" style="width:100%;height:400px"/>
-						<div class="carousel-caption">
-							<h2>강동 주전 몽돌해변</h2>
-						</div>
+						<a href="http://www.donggu.ulsan.kr/tour/">						
+							<img src="../Images/4.jpg" alt="강동 주전 몽돌해변" style="width:100%;height:400px"/>
+								<div class="carousel-caption">
+									<h2>강동 주전 몽돌해변</h2>
+								</div>
+						</a>
 					</div>
 					
 					<div class="item">
+						<a href="http://www.ulsanpark.com">						
 						<img src="../Images/5.jpg" alt="울산대공원" style="width:100%;height:400px"/>
 						<div class="carousel-caption">
 							<h2>울산대공원</h2>
 						</div>
+						</a>>
 					</div>
 					
 					<div class="item">
-						<img src="../Images/6.jpg" alt="울산대교" style="width:100%;height:400px"/>
-						<div class="carousel-caption">
-							<h2>울산대교</h2>
-						</div>
+						<a href="http://www.donggu.ulsan.kr/tour/touristInfo/ulsanBridgeInfo.jsp">						
+							<img src="../Images/6.jpg" alt="울산대교" style="width:100%;height:400px"/>
+								<div class="carousel-caption">
+									<h2>울산대교</h2>
+								</div>
+						</a>
 					</div>
 					
 					<div class="item">
-						<img src="../Images/7.jpg" alt="장생포 고래 문화 마을" style="width:100%;height:400px"/>
-						<div class="carousel-caption">
-							<h2>장생포 고래 문화 마을</h2>
-						</div>
+						<a href="http://www.whalecity.kr">										
+							<img src="../Images/7.jpg" alt="장생포 고래 문화 마을" style="width:100%;height:400px"/>
+								<div class="carousel-caption">
+									<h2>장생포 고래 문화 마을</h2>
+								</div>
+						</a>
 					</div>
 					
 					<div class="item">
-						<img src="../Images/8.jpg" alt="외고산 옹기 마을" style="width:100%;height:400px"/>
-						<div class="carousel-caption">
-							<h2>외고산 옹기 마을</h2>
-						</div>
+						<a href="http://onggi.ulju.ulsan.kr/academy/intro.php">						
+							<img src="../Images/8.jpg" alt="외고산 옹기 마을" style="width:100%;height:400px"/>
+								<div class="carousel-caption">
+									<h2>외고산 옹기 마을</h2>
+								</div>
+						</a>
 					</div>
 					
 					<div class="item">
-						<img src="../Images/9.jpg" alt="대운산 내원암 계곡" style="width:100%;height:400px"/>
-						<div class="carousel-caption">
-							<h2>대운산 내원암 계곡</h2>
-						</div>
+						<a href="https://tour.ulju.ulsan.kr/">						
+							<img src="../Images/9.jpg" alt="대운산 내원암 계곡" style="width:100%;height:400px"/>
+								<div class="carousel-caption">
+									<h2>대운산 내원암 계곡</h2>
+								</div>
+						</a>
 					</div>
 					
 				</div>

@@ -44,7 +44,6 @@
 		<div><span>&nbsp;</span></div>
 		<div class="table-responsive">
 			<table class="table table-bordered table-hover table-condensed">
-				<!-- 테이블 컬럼폭은 col-*-*계열로 설정 -->
 				<tr>
 					<th class="text-center col-md-1">번호</th>
 					<th class="text-center col-md-1">작성자</th>
@@ -53,7 +52,6 @@
 					<th class="text-center col-md-2">등록일</th>
 					<th class="text-center col-md-1">조회수</th>
 					<th class="text-center col-md-1">좋아요</th>
-					
 				</tr>
 				<c:if test="${empty list }" var="isEmpty">
 					<tr class="text-center">
@@ -62,8 +60,7 @@
 				</c:if>
 				<c:if test="${not  isEmpty}">
 					<c:forEach var="item" items="${list}" varStatus="loop">
-						<tr><!--  
-						-->
+						<tr>
 							<td class="text-center col-md-1">${totalRecordCount - (((nowPage - 1) * pageSize) + loop.index)}</td>
 							<td class="text-center col-md-1">${item.id}</td>
 							<td class="text-left"><a href="<c:url value="/PDM/View.kosmo?no=${item.no}"/>">${item.title }</a></td>
@@ -93,13 +90,7 @@
 		   		</div>    	
 		   	</div>
 	<jsp:include page="/Template/DataRoomFooter.jsp" />
-		
-	</div><!-- container -->
-	<!-- 실제 내용 끝 -->
-	<!--  푸터 시작 -->
-	<jsp:include page="/Template/DataRoomFooter.jsp" />
-	<!-- 푸터 끝 -->
-	
+	</div>
 </body>
 <script>
 

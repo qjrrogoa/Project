@@ -105,6 +105,7 @@ public class BBSDAO {
 				psmt.setString(4, dto.getTrip());
 				psmt.setString(5, dto.getAttachfile());
 				affected = psmt.executeUpdate();
+				System.out.println("회원가입 완료");
 			}
 			catch(SQLException e) {e.printStackTrace();}
 			return affected;
@@ -149,6 +150,7 @@ public class BBSDAO {
 				dto.setPostdate(rs.getDate(8));
 				list.add(dto);
 			}
+			System.out.println("게시판 접속");
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -183,6 +185,7 @@ public class BBSDAO {
 				dto.setAttachfile(rs.getString(6));
 				dto.setVisitcount(rs.getString(7));
 				dto.setPostdate(rs.getDate(8));
+				System.out.println("조회수 증가");
 				}
 			conn.commit();
 			}
@@ -204,6 +207,7 @@ public class BBSDAO {
 			rs=psmt.executeQuery();
 			if(rs.next()) {
 				if(!rs.getString(1).equals(password))
+					System.out.println("접속 완료");
 					return false;
 			}
 		}/////try
@@ -221,6 +225,7 @@ public class BBSDAO {
 			psmt=conn.prepareStatement(sql);
 			psmt.setString(1, no);
 			affected=psmt.executeUpdate();
+			System.out.println("게시글 삭제완료");
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -238,9 +243,8 @@ public class BBSDAO {
 			psmt.setString(3, dto.getContent());
 			psmt.setString(4, dto.getTrip());
 			psmt.setString(5, dto.getNo());
-			
 			affected = psmt.executeUpdate();
-			
+			System.out.println("게시글 수정완료");
 		}
 		catch(SQLException e) {e.printStackTrace();}
 		return affected;
@@ -258,6 +262,7 @@ public class BBSDAO {
 			psmt.setString(6, dto.getIntro());
 			psmt.setString(7, dto.getId());
 			affected=psmt.executeUpdate();
+			System.out.println("마이페이지 수정완료");
 			
 		}
 		catch(SQLException e) {
@@ -281,6 +286,7 @@ public class BBSDAO {
 			dto.setGrade(rs.getString(6));
 			dto.setIntro(rs.getString(7));
 			dto.setRegidate(rs.getDate(8));
+			System.out.println("마이페이지");
 			}
 		}
 		catch(SQLException e) {
@@ -299,6 +305,8 @@ public class BBSDAO {
 			psmt.setString(2, cdto.getNo());
 			psmt.setString(3, cdto.getComments());
 			affected = psmt.executeUpdate();
+			conn.commit();
+			System.out.println("댓글 작성");
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -308,7 +316,7 @@ public class BBSDAO {
 	
 	public List<CommentsDTO> CommentsSelectList(String no) {
 		 List<CommentsDTO> list = new Vector<CommentsDTO>();
-		 String sql="Select * from comments where no=?";
+		 String sql="Select * from comments where no=? order by no desc";
 		 try {
 			 psmt = conn.prepareStatement(sql);
 			 psmt.setString(1, no);
@@ -322,6 +330,7 @@ public class BBSDAO {
 				 cdto.setRegidate(rs.getDate(5));
 				 list.add(cdto);
 			 }
+			 System.out.println("댓글보기");
 		 }
 		 catch(SQLException e){
 			 e.printStackTrace();
