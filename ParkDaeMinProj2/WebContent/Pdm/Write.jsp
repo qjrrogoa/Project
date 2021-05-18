@@ -13,6 +13,10 @@
 <!-- 부트스트랩 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- SummerNotes -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <!-- IE8 에서 HTML5 요소와 미디어 쿼리를 위한 HTML5 shim 와 Respond.js -->
 <!-- WARNING: Respond.js 는 당신이 file:// 을 통해 페이지를 볼 때는 동작하지 않습니다. -->
 <!--[if lt IE 9]>
@@ -33,17 +37,17 @@
 			</h1>
 		</div>
 		<div>
-			<form id="myform" method="post" class="form-horizontal" method="post" enctype="multipart/form-data" action="<c:url value="/PDM/Write.kosmo"/>">
+			<form id="myform" method="post" class="form-horizontal" method="post" action="<c:url value="/PDM/Write.kosmo"/>">
 				<div class="form-group">					
 					<label class="col-sm-2 control-label">제 목</label>
-					<div class="col-sm-4">
+					<div class="col-sm-6">
 						<input type="text" class="form-control" name="title" placeholder="제목을 입력하세요">
 					</div>
 				</div>
 				
 				<div class="form-group">
 						<label class="col-sm-2 control-label">다녀온 곳</label>
-						<div class="col-sm-3">
+						<div class="col-sm-6">
 							<select class="form-control" name="trip">
 								<option>태화강 국가정원과 십리대밭</option>
 								<option>대왕암 공원</option>
@@ -58,21 +62,29 @@
 						</div>
 					</div>
 					
-				<div class="form-group">				
-					<label class="col-sm-2 control-label">파일 업로드</label>
-					<div class="col-sm-8">
-						<input type="file" name="attachfile">
-						<p class="help-block">이미지 파일을 첨부하세요</p>
-				</div>
-				
-				</div>				
 				<div class="form-group">
 					<label class="col-sm-2 control-label">내 용</label>
 					<!-- 중첩 컬럼 사용 -->
 					<div class="col-sm-10">
 						<div class="row">
 							<div class="col-sm-8">
-								<textarea rows="10" class="form-control" name="content" placeholder="내용을 입력하세요"></textarea>
+								<textarea rows="10" class="form-control" name="content" id="summernote" placeholder="내용을 입력하세요"></textarea>
+								 <script>
+							      $('#summernote').summernote({
+							        placeholder: 'Hello stand alone ui',
+							        tabsize: 2,
+							        height: 400,
+							        toolbar: [
+							          ['style', ['style']],
+							          ['font', ['bold', 'underline', 'clear']],
+							          ['color', ['color']],
+							          ['para', ['ul', 'ol', 'paragraph']],
+							          ['table', ['table']],
+							          ['insert', ['link', 'picture', 'video']],
+							          ['view', ['fullscreen', 'codeview', 'help']]
+							        ]
+							      });
+							    </script>
 							</div>
 						</div>
 					</div>
@@ -141,13 +153,6 @@
 					$('#warningMessage').html("제목을 입력하세요");
 					$('#small-modal').modal('show');
 					focusObject= $(this).get(0).title;
-					return false;
-				}
-				
-				if(fileObj.value==""){		
-					$('#warningMessage').html("파일을 첨부하세요");
-					$('#small-modal').modal('show');
-					focusObject= $(this).get(0).attachfile;
 					return false;
 				}
 				

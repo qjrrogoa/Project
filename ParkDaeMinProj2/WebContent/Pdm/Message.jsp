@@ -14,7 +14,7 @@
 	<c:when test="${WHERE == 'EDT'}">
 		<c:set var="successMsg" value="수정 성공했어요"/>
 		<c:set var="failsMsg" value="수정 실패했어요"/>
-		<c:set var="successUrl" value="/PDM/View.kosmo?no=${no}"/>
+		<c:set var="successUrl" value="/PDM/View.kosmo?no=${param.no}"/>
 	</c:when>
 	<c:when test="${WHERE == 'UPL'}">
 		<c:set var="failsMsg" value="이미지 파일만 업로드 하세요"/>
@@ -25,7 +25,7 @@
 		<c:set var="successUrl" value="/PDM/List.kosmo"/>
 	</c:when>
 	<c:when test="${WHERE == 'COMM'}">
-		<c:set var="successMsg" value="댓글 입력 됐어요"/>
+		<c:set var="successMsg" value="댓글 입력 성공"/>
 		<c:set var="failsMsg" value="로그인 후 이용하세요"/>
 		<c:set var="failsMsg2" value="댓글 입력 해주세요!!!"/>
 		<c:set var="successUrl" value="/PDM/View.kosmo?no=${no}"/>

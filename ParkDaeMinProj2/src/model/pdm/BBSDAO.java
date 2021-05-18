@@ -96,14 +96,13 @@ public class BBSDAO {
 	}
 	public int insert(BBSDTO dto) {
 			int affected=0;
-			String sql="INSERT INTO bbs VALUES(SEQ_BBS.NEXTVAL,?,?,?,?,?,DEFAULT,DEFAULT)";
+			String sql="INSERT INTO bbs VALUES(SEQ_BBS.NEXTVAL,?,?,?,?,DEFAULT,DEFAULT)";
 			try {
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, dto.getId());
 				psmt.setString(2, dto.getTitle());
 				psmt.setString(3, dto.getContent());
 				psmt.setString(4, dto.getTrip());
-				psmt.setString(5, dto.getAttachfile());
 				affected = psmt.executeUpdate();
 				System.out.println("회원가입 완료");
 			}
@@ -145,9 +144,8 @@ public class BBSDAO {
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
 				dto.setTrip(rs.getString(5));
-				dto.setAttachfile(rs.getString(6));
-				dto.setVisitcount(rs.getString(7));
-				dto.setPostdate(rs.getDate(8));
+				dto.setVisitcount(rs.getString(6));
+				dto.setPostdate(rs.getDate(7));
 				list.add(dto);
 			}
 			System.out.println("게시판 접속");
@@ -182,9 +180,8 @@ public class BBSDAO {
 				dto.setTitle(rs.getString(3));
 				dto.setContent(rs.getString(4));
 				dto.setTrip(rs.getString(5));
-				dto.setAttachfile(rs.getString(6));
-				dto.setVisitcount(rs.getString(7));
-				dto.setPostdate(rs.getDate(8));
+				dto.setVisitcount(rs.getString(6));
+				dto.setPostdate(rs.getDate(7));
 				System.out.println("조회수 증가");
 				}
 			conn.commit();
@@ -235,14 +232,13 @@ public class BBSDAO {
 	}
 	public int update(BBSDTO dto) {
 		int affected=0;
-		String sql="UPDATE bbs SET title =?, attachfile=?, content=?, trip=? WHERE no=? ";
+		String sql="UPDATE bbs SET title =?, content=?, trip=? WHERE no=? ";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getAttachfile());
-			psmt.setString(3, dto.getContent());
-			psmt.setString(4, dto.getTrip());
-			psmt.setString(5, dto.getNo());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getTrip());
+			psmt.setString(4, dto.getNo());
 			affected = psmt.executeUpdate();
 			System.out.println("게시글 수정완료");
 		}

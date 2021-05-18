@@ -47,7 +47,7 @@
 				<!-- 테이블 컬럼폭은 col-*-*계열로 설정 -->
 					<tr>
 						<th class="col-md-2 text-center">번 호</th>
-						<td>${dto.no }</td>
+						<td>${dto.no}</td>
 						<th class="col-md-2 text-center">조회수</th>
 						<td class="col-md-2 text-center">${dto.visitcount }</td>
 						<th class="text-center">작성자</th>
@@ -77,14 +77,12 @@
 			</div>
 		<div class="row">
 			<div class="col-md-offset-10 col-md-2" >
-				<!-- .center-block 사용시 해당 블락의 크기를 지정하자 -->				
 				<ul id="pillMenu" class="nav nav-pills pull-right" style="width:200px;margin-bottom:10px">
 				<c:if test="${user==dto.id}">
-					<li><a href="#" class="btn btn-success" data-toggle="modal" data-target="#passwordModal">수정</a></li>
-					<!-- confirm창에서 취소시에는 모달창이 뜨지 않도록 data-toggle="moda" 제거 그리고 자스로 제어해서 모달창을 띄운다(삭제 확인버튼 클릭시에만) -->
-					<li><a href="#" class="btn btn-success" data-target="#passwordModal">삭제</a></li>
+					<li><a href="#"  onclick="editchk()" class="btn btn-success" >수정</a></li>
+					<li><a href="#" onclick="delchk();" class="btn btn-success" >삭제</a></li>
 				</c:if>
-					<li style="padding-right: 0%"><a href="<c:url value="/PDM/List.kosmo?"/>" class="btn btn-success">목록</a></li>
+					<li style="padding-right: 0%"><a href="<c:url value="/PDM/List.kosmo"/>" class="btn btn-success">목록</a></li>
 				</ul>
 			</div>
 		</div><!-- row -->	
@@ -128,73 +126,52 @@
 					</div>
 				</div>
 			</form>	
-		
+			
+		<div class="modal  fade" id="small-modal" data-backdrop="static">
+	   		<div class="modal-dialog modal-sm">
+	   			<div class="modal-content">    				
+	   				<div class="modal-body">
+	   					<button class="close" data-dismiss="modal">
+	   						<span>&times;</span>
+	   					</button>
+	   					<h5 class="modal-title"><span class="glyphicon glyphicon-bullhorn"></span>로그인</h5>
+	   					<h4 id="warningMessage" style="color:red"></h4>
+	   				</div>    			
+	   			</div>    		
+	   		</div>    	
+	   	</div>
+	   	
 	</div><!-- container -->
 	
-	<!-- 수정/삭제시 사용할 모달 시작 -->
-	<div class="modal fade" id="passwordModal" data-backdrop="static">
-   		<div class="modal-dialog modal-sm">
-   			<div class="modal-content">    				
-   				<div class="modal-header">
-   					<button class="close" data-dismiss="modal">
-   						<span>&times;</span>
-   					</button>   					
-   					<h4 class="modal-title">확인 창</h4>
-   				</div>    
-   				<div class="modal-body">
-   					<form class="form-inline" id="passwordForm" method="post" action="<c:url value="/PDM/Password.kosmo"/>">
-   						<!-- 키값 -->
-   						<input type="hidden" name="no" value="${dto.no }"/>
-   						<!-- 수정/삭제 판단용 -->
-   						<input type="hidden" name="mode"/>
-   						<!-- 업로드된 파일명:삭제메뉴 클릭시 테이블 데이타 삭제후 업로드된 기존 파일 삭제하기 위함 -->
-   						<input type="hidden" name="originalFilename" value="${dto.attachfile}"/>
-   						<!-- 현재 페이지번호 -->
-   						<input type="hidden" name="nowPage" value="${param.nowPage}"/>
-   						<div class="form-group">
-   							<label><span class="glyphicon glyphicon-lock"></span></label>
-   							<input type="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요"/>
-   						</div>
-   						<div class="form-group">
-   							<input type="submit" class="btn btn-info" value="확인"/>
-   						</div>
-   					</form>
-   				</div>   							
-   			</div>  
-   			  		
-   		</div> 
-   	</div>
-   	
+	
 	<!-- 수정/삭제시 사용할 모달 끝 -->
 	<!-- 실제 내용 끝 -->
 	
 	<!--  푸터 시작 -->
 	<jsp:include page="/Template/DataRoomFooter.jsp" />
 	<!-- 푸터 끝 -->
-	<script>
-		$('#pillMenu a').click(function(){
-			console.log($(this).html());
-			var text =$(this).html().trim();
-			if(text=='수정'){//수정버튼 클릭
-				$('input[name=mode]').val('UPDATE');
-				$('.modal-title').html('수정용 비밀번호 입력창');
-			}
-			else if(text=='삭제'){//삭제버튼 클릭
-				if(confirm("정말로 삭제 하시겠습니까?")){
-					$('input[name=mode]').val('DELETE');
-					$('.modal-title').html('삭제용 비밀번호 입력창');			
-					//모달창 자스로 띄우기
-					$("#passwordModal").modal('show');
-				}
-			}
-		});
-		//다운로드수 증가시키기
-		$('.downfile').click(function(){
-			var downcount=parseInt($('#downcount').html());
-			$('#downcount').html(downcount+1);
-			
-		});
-		
+	<script type="text/javascript">
+		 function delchk(){
+			 if(confirm("삭제하시겠습니까?")){
+				 location.href = "<c:url value='/PDM/Delete.kosmo?no=${dto.no}'/>";
+				 return true;
+			 }
+			 else{
+				 return false;
+			 }
+		 }
+		 
+		 function editchk(){
+			 if(confirm("수정하시겠습니까?")){
+				 location.href = "<c:url value='/PDM/Edit.kosmo?no=${dto.no}'/>";
+				 return true;
+			 }
+			 else{
+				 return false;
+			 }
+		 }
+	
+	
 	</script>
 </body>
 </html>

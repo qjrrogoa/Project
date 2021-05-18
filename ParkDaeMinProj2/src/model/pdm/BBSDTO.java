@@ -6,7 +6,6 @@ public class BBSDTO {
 	private String title;
 	private String content;
 	private String trip;
-	private String attachfile;
 	private String visitcount;
 	private java.sql.Date postdate;
 	public String getNo() {
@@ -38,12 +37,6 @@ public class BBSDTO {
 	}
 	public void setTrip(String trip) {
 		this.trip = trip;
-	}
-	public String getAttachfile() {
-		return attachfile;
-	}
-	public void setAttachfile(String attachfile) {
-		this.attachfile = attachfile;
 	}
 	public String getVisitcount() {
 		return visitcount;

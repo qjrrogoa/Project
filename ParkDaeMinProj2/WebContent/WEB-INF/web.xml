@@ -114,6 +114,15 @@
   	<url-pattern>/PDM/Password.kosmo</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+  	<servlet-name>PDMDelete</servlet-name>
+  	<servlet-class>controller.pdm.DeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>PDMDelete</servlet-name>
+  	<url-pattern>/PDM/Delete.kosmo</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
   	<servlet-name>PDMEdit</servlet-name>
   	<servlet-class>controller.pdm.EditController</servlet-class>
@@ -141,6 +150,7 @@
   	<url-pattern>/PDM/Commets.kosmo</url-pattern>
   </servlet-mapping>
   
+
   
   <context-param>
   	<param-name>JNDI_ROOT</param-name>

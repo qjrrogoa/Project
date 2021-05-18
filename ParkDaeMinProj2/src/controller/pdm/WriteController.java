@@ -30,40 +30,19 @@ public class WriteController extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 				req.setCharacterEncoding("UTF-8");
-				MultipartRequest mr= FileUtils.upload(req,req.getServletContext().getRealPath("/Upload"));
 				int successOrFail;
-				if(mr !=null) {
 					String id = req.getSession().getAttribute("user").toString();
-					String title = mr.getParameter("title");
-					String content = mr.getParameter("content");
-					String trip = mr.getParameter("trip");
-					String attachfile = mr.getFilesystemName("attachfile");
+					String title = req.getParameter("title");
+					String content = req.getParameter("content");
+					String trip = req.getParameter("trip");
 					BBSDAO dao = new BBSDAO(req.getServletContext());
 					BBSDTO dto = new BBSDTO();
 					dto.setId(id);
-					dto.setAttachfile(attachfile);
 					dto.setContent(content);
 					dto.setTitle(title);
 					dto.setTrip(trip);
-					File file=mr.getFile("attachfile");
-					String filename=file.getName();
-					String ext=filename.substring(filename.lastIndexOf(".")+1);
-					if(ext.equalsIgnoreCase("JPG") || ext.equalsIgnoreCase("PNG")||ext.equalsIgnoreCase("JPEG")){
-						successOrFail=dao.insert(dto);
-					}
-					else {
-						successOrFail=0;
-					}
-					
-					if(successOrFail ==0) {
-						FileUtils.deleteFile(req,"/Upload",attachfile);
-					}
+					successOrFail=dao.insert(dto);
 					dao.close();
-				}
-				else {
-					successOrFail = -1;
-				}
-			
 				req.setAttribute("SUCCFAIL",successOrFail);
 				req.setAttribute("WHERE","INS");
 				req.getRequestDispatcher("/Pdm/Message.jsp").forward(req, resp);

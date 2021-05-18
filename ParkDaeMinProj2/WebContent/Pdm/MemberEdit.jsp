@@ -41,22 +41,25 @@
 					
 					<div class="form-group"><!-- <div class="row">와 같다 -->
 						<!--  label에 control-label도 함께:가운데 수직 정렬 -->
-						<label class="col-sm-2 control-label" >비밀번호</label>
+						<label class="col-sm-2 control-label" >변경 할 비밀번호</label>
 						<div class="col-sm-4">
 							<input type="password" name="password" class="form-control" placeholder="비밀번호">
 						</div>
-						
+					<p class="help-block" style="color:red;"><small>필수 항목입니다.</small></p>
+											
 					</div>
 					
 					<div class="form-group">
-						<label class="col-sm-2 control-label" >이름</label>
+						<label class="col-sm-2 control-label" >변경 할 이름</label>
 						<div class="col-sm-4">
 							<input type="text" name="name" class="form-control" placeholder="이름" value="${dto.name }"/>
 						</div>
+					<p class="help-block" style="color:red;"><small>필수 항목입니다.</small></p>
+					
 					</div>
 					
 					<div class="form-group">
-						<label class="col-sm-2 control-label">성별</label>
+						<label class="col-sm-2 control-label">변경 할 성별</label>
 						<div class="col-sm-4">
 							<div class="radio">
 								<label><input name="gender" value="남자" type="radio"/>남자</label>
@@ -66,7 +69,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label class="col-sm-2 control-label">관심사항</label>
+						<label class="col-sm-2 control-label">변경 할 관심사항</label>
 						<div class="col-sm-4">
 							<div class="checkbox">
 								<label><input name="inter" value="정치" type="checkbox"/>정치</label>
@@ -80,7 +83,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">학력</label>
+						<label class="col-sm-2 control-label">변경 할 학력</label>
 						<div class="col-sm-2">
 							<select name="grade" class="form-control">
 								<option >학력 미선택</option>
@@ -92,7 +95,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">자기소개</label>
+						<label class="col-sm-2 control-label">변경 할 자기소개</label>
 						<!-- 중첩 컬럼 사용 -->
 						<div class="col-sm-10">
 							<div class="row">

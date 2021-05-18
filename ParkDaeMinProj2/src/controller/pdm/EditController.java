@@ -15,65 +15,40 @@ import model.pdm.BBSDTO;
 import model.pdm.FileUtils;
 
 public class EditController extends HttpServlet {
+	
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String no = req.getParameter("no");
+		//req.getRequestDispatcher("/Pdm/Edit.jsp?no="+no).forward(req, resp);
+		System.out.println("get방식 no:"+no);
+		req.getRequestDispatcher("/Pdm/Edit.jsp?").forward(req, resp);
+	}
+	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String mode = req.getParameter("mode");
-		if(mode !=null) {
-			String no = req.getParameter("no");
-			BBSDAO dao = new BBSDAO(req.getServletContext());
-			String referer=req.getHeader("referer");
-			int beginIndex=referer.lastIndexOf("/")+1;
-			String prevPage = referer.substring(beginIndex);
-			BBSDTO dto = dao.SelectOne(no,prevPage);
-			dao.close();
-			req.setAttribute("dto", dto);
-			req.getRequestDispatcher("/Pdm/Edit.jsp").forward(req, resp);
-			}
-		else {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			req.setCharacterEncoding("UTF-8");
-			MultipartRequest mr= FileUtils.upload(req,req.getServletContext().getRealPath("/Upload"));
-			int successOrFail;
-			if(mr !=null) {
-				String no = mr.getParameter("no");
-				req.setAttribute("no",no);
-				req.setAttribute("nowPage", mr.getParameter("nowPage"));
-				String originalFilename = mr.getParameter("originalFilename");
-				String title = mr.getParameter("title");
-				String content = mr.getParameter("content");
-				String trip = mr.getParameter("trip");
-				String attachfile = mr.getFilesystemName("attachfile");
-				if(attachfile==null) {  
-					attachfile = originalFilename;
-				}
-				BBSDAO dao = new BBSDAO(req.getServletContext());
-				BBSDTO dto = new BBSDTO();
-				dto.setAttachfile(attachfile);
-				dto.setTrip(trip);
-				dto.setContent(content);
-				dto.setTitle(title);
-				dto.setNo(no);
-				File file=mr.getFile("attachfile");
-				String filename=file.getName();
-				String ext=filename.substring(filename.lastIndexOf(".")+1);
-				if(ext.equalsIgnoreCase("JPG") || ext.equalsIgnoreCase("PNG")||ext.equalsIgnoreCase("JPEG")){
-					successOrFail=dao.update(dto);
-				}
-				else {
-					successOrFail=0;
-				}
-				if(successOrFail ==1 && mr.getFilesystemName("attachfaile")!=null) {//DB업데이트 성공하고 파일 교체시에만 파일 삭제
-					FileUtils.deleteFile(req,"/Upload",originalFilename);
-				}
-				dao.close();
-			}
-			else { 
-				successOrFail = -1;
-			}
-			req.setAttribute("SUCCFAIL",successOrFail);
+			String no = req.getParameter("no");
+			System.out.println("post방식 no:"+no);
+			
+			req.setAttribute("nowPage", req.getParameter("nowPage"));
+			String title = req.getParameter("title");
+			String content = req.getParameter("content");
+			String trip = req.getParameter("trip");
+			
+			System.out.println(title);
+			System.out.println(content);
+			System.out.println(trip);
+			BBSDAO dao = new BBSDAO(req.getServletContext());
+			BBSDTO dto = new BBSDTO();
+			dto.setTrip(trip);
+			dto.setContent(content);
+			dto.setTitle(title);
+			dto.setNo(no);
+			int successOrFail=dao.update(dto);
+			dao.close();
 			req.setAttribute("WHERE","EDT");
+			req.setAttribute("SUCCFAIL",successOrFail);
 			req.getRequestDispatcher("/Pdm/Message.jsp").forward(req, resp);
 			
-		}
-	
 	}
 }
