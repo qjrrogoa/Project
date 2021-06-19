@@ -14,7 +14,7 @@ DROP TABLE MEMBER CASCADE CONSTRAINTS;
 CREATE TABLE BBS
 (
 	NO number NOT NULL,
-	ID varchar2(10) references member(id),
+	ID varchar2(30) references member(id),
 	TITLE nvarchar2(50) NOT NULL,
 	CONTENT nvarchar2(100),
 	LIKECOUNT number,
@@ -26,7 +26,7 @@ CREATE TABLE BBS
 
 CREATE TABLE MEMBER
 (
-	ID varchar2(10) NOT NULL,
+	ID varchar2(30) NOT NULL,
 	PWD varchar2(10) NOT NULL,
 	NAME nvarchar2(10) NOT NULL,
 	PRIMARY KEY (ID)
@@ -50,11 +50,11 @@ CREATE TABLE STAMP
 );
 
 
-craete sequences seq_bbs
+CREATE SEQUENCE seq_bbs
 nocache
 nocycle;
 
-craete sequences seq_stamp
+CREATE SEQUENCE seq_stamp
 nocache
 nocycle;
 

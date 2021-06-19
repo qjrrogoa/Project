@@ -24,9 +24,8 @@ public class MemberDAO {
 		return sqlMapper.selectOne("memberLogin",map);
 	}
 
-	public void logOut(HttpSession session) {
-		// TODO Auto-generated method stub
-		
+	public boolean joinCheck(Map map) {
+		return sqlMapper.selectOne("memberJoinCheck",map);
 	}
 
 }

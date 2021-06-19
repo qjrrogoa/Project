@@ -23,7 +23,11 @@ public class MemberSeiviceImpl implements MemberService {
 	@Override
 	public boolean login(Map map) {
 		return dao.login(map);
-	
+	}
+
+	@Override
+	public boolean joinCheck(Map map) {
+		return dao.joinCheck(map);
 	}
 
 }

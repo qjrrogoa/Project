@@ -8,5 +8,6 @@ public interface MemberService {
 
 	int join(Map map);
 	boolean login(Map map);
+	boolean joinCheck(Map map);
 	
 }

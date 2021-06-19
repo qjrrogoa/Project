@@ -36,6 +36,7 @@ public class BBSController {
 	public String List(Model model) {
 		List<BBSDTO> list = bbsService.selectList();
 		model.addAttribute("list",list);
+		System.out.println(list);
 		return "bbs/List";
 	}
 	

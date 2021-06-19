@@ -68,6 +68,11 @@
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<button type="submit" class="btn btn-danger">로그인</button>
+								<!-- 카카오 로그인 창 -->
+								<a href="https://kauth.kakao.com/oauth/authorize?client_id=2e146e4170e9378e12b5438929a05c2f&redirect_uri=http://localhost:9090/exer/Member/KakaoLogin.do
+								&response_type=code">
+								<img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"  />
+								</a>
 							</div>
 						</div>
 					</form>

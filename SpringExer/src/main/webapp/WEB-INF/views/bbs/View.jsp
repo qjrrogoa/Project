@@ -165,7 +165,6 @@
 				data:{id, no},
 				dataType:"text",
 				success:function(data){
-					console.log("check값 ",data);
 					if(data==0){
 						$("#like").val("좋아요 취소");
 						$("#likecount").html(++likecount);
