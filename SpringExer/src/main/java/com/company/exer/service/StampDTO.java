@@ -16,5 +16,6 @@ public class StampDTO {
 	String lng;
 	String sno;
 	Date stampDate;
+	String title;
 
 }

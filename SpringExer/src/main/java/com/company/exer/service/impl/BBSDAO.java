@@ -47,7 +47,7 @@ public class BBSDAO {
 	
 	public int likeCount(Map map) {
 		return sqlMapper.update("bbsLikeCount",map);
-	}
+	}  
 	
 	public int unlike(Map map) {
 		return sqlMapper.delete("bbsUnLike",map);

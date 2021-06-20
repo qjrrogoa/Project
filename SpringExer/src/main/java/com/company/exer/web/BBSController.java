@@ -98,7 +98,7 @@ public class BBSController {
 		int check = bbsService.likeCheck(map);
 		if(check==0) {
 			bbsService.like(map);
-			//bbsService.stampInsert(map);
+			//bbsServic  e.stampInsert(map);
 		}
 		else {
 			bbsService.unlike(map); 
