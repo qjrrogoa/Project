@@ -1,20 +1,19 @@
 package com.company.exer.service;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StampDTO {
-	String rvNo;
-	String rvLat;
-	String rvLng;
-	String stNo;
-	Date stDate;
-	String rvTitle;
+public class FollowDTO {
+	private String followNo;
+	private String followerId;
+	private String followId;
+	private String followCnt;
+	private String followerCnt;
+	private int followCheck;
 }

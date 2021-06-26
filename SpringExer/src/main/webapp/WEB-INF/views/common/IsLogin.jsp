@@ -8,5 +8,4 @@
 		alert("로그인후 이용하세요");
 		location.replace("<c:url value='/Member/Login.do'/>");	
 	</script>
-
 </c:if>

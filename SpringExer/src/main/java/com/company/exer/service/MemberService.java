@@ -9,5 +9,10 @@ public interface MemberService {
 	int join(Map map);
 	boolean login(Map map);
 	boolean joinCheck(Map map);
+	MemberDTO mypage(Map map);
+	int followCheck(Map map);
+	int followCnt(Map map);
+	int followerCnt(Map map);
+
 	
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- namespace속성:매퍼파일의 완전한경로 .xml는 생략 -->
+<!-- ※ibatis와는 다르게 id값에 .(dot)를 사용 못한다. -->
+<mapper namespace="mybatis.mapper.review">
+
+	<select id="reviewSelectList" resultType="reviewDTO">
+		select r.*,m.name
+		from review r Join member m  ON r.id=m.id
+		order by rvNo desc
+	</select>
+	
+	<insert id="reviewInsert" parameterType="Map">
+		insert into review
+		values(SEQ_review.NEXTVAL,#{id},#{rvTitle},#{rvCtt},default,#{rvLat},#{rvLng})
+	</insert>
+	
+	<select id="reviewSelectOne" parameterType="Map"  resultType="reviewDTO">
+		select r.*,m.name
+		from review r JOIN member m ON r.id=m.id
+		Where rvNo=#{rvNo}
+	</select>
+	
+	<update id="reviewUpdate" parameterType="Map">
+		update review
+		set rvTitle=#{rvTitle}, rvCtt=#{rvCtt}
+		Where rvNo=#{rvNo}
+	</update>
+	
+	<delete id="reviewDelete" parameterType="Map">
+		delete review
+		Where rvNo=#{rvNo}
+	</delete>
+	
+	<select id="reviewLikeCheck" parameterType="Map" resultType="Int">
+		select count(*)
+		from rvLike
+		where rvNo=#{rvNo} and id=#{id}
+	</select>
+	
+	<insert id="reviewLike" parameterType="Map">
+		insert into rvLike
+		values (#{id},#{rvNo})
+	</insert>
+	
+	<update id="reviewLikeCount" parameterType="Map">
+		update review
+		set rvLikeCnt=(select count(*) from rvLike where rvNo=#{rvNo})
+		where rvNo=#{rvNo}
+	</update>
+	
+	<delete id="reviewUnLike" parameterType="Map">
+		delete rvLike
+		where rvNo=#{rvNo} and id=#{id}
+	</delete>
+	
+	<insert id="stampInsert" parameterType="Map">
+		insert into stamp(rvNo,rvLat,rvLng,stNo)
+		select rvNo,rvLat,rvLng,SEQ_STAMP.nextval
+		from review
+		where rvNo=#{rvNo}
+	</insert>
+</mapper>

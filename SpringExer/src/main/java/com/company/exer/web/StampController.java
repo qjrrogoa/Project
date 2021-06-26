@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.company.exer.service.BBSDTO;
+import com.company.exer.service.ReviewDTO;
 import com.company.exer.service.StampDTO;
 import com.company.exer.service.StampService;
 

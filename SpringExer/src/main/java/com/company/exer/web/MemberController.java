@@ -49,7 +49,7 @@ public class MemberController {
 		int affected = memberService.join(map);
 		if(affected==1) {
 			session.setAttribute("id",map.get("id"));
-			return "forward:/BBS/List.do";
+			return "forward:/Review/List.do";
 		}
 		else
 			return "member/Join";
@@ -69,10 +69,8 @@ public class MemberController {
 		else {
 			model.addAttribute("NotMember","아뒤와 비번이 틀려요");
 		}
-		return "forward:/BBS/List.do";
+		return "forward:/Review/List.do";
 	}
-
-	
 	
 	@RequestMapping(value="KakaoLogin.do",produces="application/json;charset=UTF-8")
 	public String KakaoLogin(String code,HttpSession session) {
@@ -158,8 +156,6 @@ public class MemberController {
 		}
 		
 		//UserObject username,password
-		System.out.println("찍고 아이디 : "+kakaoProfile.getId());
-		System.out.println("찍고 이름 : "+kakaoProfile.properties.getNickname());
 		
 //		MemberDTO dto = MemberDTO.builder()
 //				.id(kakaoProfile.getId().toString())
@@ -176,29 +172,54 @@ public class MemberController {
 		
 		boolean flag = memberService.joinCheck(map);
 		
-		//이미 가입 완료ㅕ
+		//이미 가입 완료
 		if(flag == true) {
 			memberService.login(map);
 			session.setAttribute("id",map.get("id"));
-			System.out.println("2222222222222222 "+map.get("id"));
-			return "forward:/BBS/List.do";
-
+			return "forward:/Review/List.do";
 		}
 
 		//비 가입자
 		else {
 			memberService.join(map);
 			session.setAttribute("id",map.get("id"));
-			System.out.println("1111111111111111111"+map.get("id"));
-			return "forward:/BBS/List.do";
-
+			return "forward:/Review/List.do";
 		}
 	}
-	
 	
 	@RequestMapping("Logout.do")
 	public String Logout(HttpSession session) {
 		session.invalidate();
 		return "forward:/Stamp/Home.do";
+	}
+	
+	@RequestMapping("Mypage.do")
+	public String Mypage(@RequestParam Map map, Model model,HttpSession session){
+		if(session.getAttribute("id")!=null) {
+			String followerId = session.getAttribute("id").toString();
+			MemberDTO dto = memberService.mypage(map);
+			map.put("followerId", followerId);
+			map.put("followId", map.get("id"));
+			System.out.println("asfdjsafjsald"+map.get("followId"));
+			int followCheck = memberService.followCheck(map);
+			int followCnt=memberService.followCnt(map);
+			int followerCnt=memberService.followerCnt(map);
+			
+			model.addAttribute("followCheck",followCheck);
+			model.addAttribute("followCnt",followCnt);
+			model.addAttribute("followerCnt",followerCnt);
+			model.addAttribute("dto", dto);
+		}
+		else {
+			MemberDTO dto = memberService.mypage(map);
+			map.put("followId", map.get("id"));
+			int followCnt=memberService.followCnt(map);
+			int followerCnt=memberService.followerCnt(map);
+			model.addAttribute("dto", dto);
+			model.addAttribute("followCnt",followCnt);
+			model.addAttribute("followerCnt",followerCnt);
+		}
+		
+		return "/member/Mypage";
 	}
 }

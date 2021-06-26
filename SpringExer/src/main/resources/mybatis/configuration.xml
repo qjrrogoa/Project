@@ -4,13 +4,15 @@
 	
 	<typeAliases>
 		<typeAlias type="com.company.exer.service.MemberDTO" alias="memberDTO"/>	
-		<typeAlias type="com.company.exer.service.BBSDTO" alias="bbsDTO"/>	
+		<typeAlias type="com.company.exer.service.ReviewDTO" alias="reviewDTO"/>	
 		<typeAlias type="com.company.exer.service.StampDTO" alias="stampDTO"/>	
+		<typeAlias type="com.company.exer.service.FollowDTO" alias="followDTO"/>	
 	</typeAliases>
 	<!-- 매퍼파일(SQL쿼리 결과와 자바빈 매핑)의 위치정보 설정 -->
 	<mappers>
 		<mapper resource="mybatis/mapper/member.xml" />
-		<mapper resource="mybatis/mapper/bbs.xml" />
+		<mapper resource="mybatis/mapper/review.xml" />
 		<mapper resource="mybatis/mapper/stamp.xml" />
+		<mapper resource="mybatis/mapper/follow.xml" />
 	</mappers>
 </configuration>

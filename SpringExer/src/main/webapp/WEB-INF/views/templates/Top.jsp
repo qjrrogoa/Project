@@ -38,12 +38,13 @@ body {
 				<li><a href="<c:url value="/Stamp/Home.do"/>">HOME</a></li>
 				<c:if test="${not empty sessionScope.id }" var="isLogin">
 					<li><a href="<c:url value="/Member/Logout.do"/>">Logout</a></li>
+					<li><a href="<c:url value="/Member/Mypage.do?id=${sessionScope.id}"/>">MyPage</a></li>
 				</c:if>
 				<c:if test="${not isLogin }">					
 					<li><a href="<c:url value="/Member/Login.do"/>">Login</a></li>
+					<li><a href="<c:url value="/Member/Join.do"/>">JOIN</a></li>
 				</c:if>
-				<li><a href="<c:url value="/BBS/List.do"/>">BBS</a></li>
-				<li><a href="<c:url value="/Member/Join.do"/>">JOIN</a></li>
+				<li><a href="<c:url value="/Review/List.do"/>">Review</a></li>
 				
 			</ul>
 		</div>

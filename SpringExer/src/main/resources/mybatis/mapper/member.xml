@@ -23,4 +23,28 @@
 		From member
 		where id=#{id}
 	</select>
+	
+	<select id="memberMypage" parameterType="Map" resultType="memberDTO">
+		select *
+		from member
+		where id=#{id}
+	</select>
+	
+	<select id="followCheck" parameterType="Map" resultType="Int">
+		select count(*)
+		from follow
+		where followerId=#{followerId} and followId=#{followId}
+	</select>
+	
+	<select id="followCnt" parameterType="Map" resultType="Int">
+		select count(*)
+		from follow
+		where followerId = #{followId}
+	</select>
+	
+	<select id="followerCnt" parameterType="Map" resultType="Int">
+		select count(*)
+		from follow
+		where followId = #{followId}
+	</select>
 </mapper>

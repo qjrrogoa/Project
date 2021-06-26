@@ -7,7 +7,7 @@
 <!-- ※ibatis와는 다르게 id값에 .(dot)를 사용 못한다. -->
 <mapper namespace="mybatis.mapper.stamp">
 	<select id="stampList" resultType="stampDTO">
-		select s.*, b.title
-		from stamp s Join bbs b On s.no=b.no
+		select s.*, b.rvTitle
+		from stamp s Join review b On s.rvNo=b.rvNo
 	</select>
 </mapper>
