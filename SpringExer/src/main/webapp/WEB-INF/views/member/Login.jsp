@@ -68,11 +68,20 @@
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<button type="submit" class="btn btn-danger">로그인</button>
-								<!-- 카카오 로그인 창 -->
-								<a href="https://kauth.kakao.com/oauth/authorize?client_id=2e146e4170e9378e12b5438929a05c2f&redirect_uri=http://localhost:9090/exer/Member/KakaoLogin.do
-								&response_type=code">
-								<img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"  />
-								</a>
+								<div>
+									<!-- 카카오 로그인 창 -->
+									<a href="https://kauth.kakao.com/oauth/authorize?client_id=2e146e4170e9378e12b5438929a05c2f&redirect_uri=http://localhost:9090/exer/Member/KakaoLogin.do
+									&response_type=code">
+									<img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222"  />
+									</a>
+								</div>
+								
+								<div>
+									<!-- 카카오 로그인 창 -->
+									<a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=OKVhsE6FDsMVPSDUedj7&state=STATE_STRING&redirect_uri=http://localhost:9090/exer/Member/NaverLogin.do">
+									<img src="<c:url value="/images/naver.png"/>" width="222" /> 
+									</a>
+								</div>
 							</div>
 						</div>
 					</form>

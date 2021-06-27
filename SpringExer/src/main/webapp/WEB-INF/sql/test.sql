@@ -1,6 +1,6 @@
 CREATE TABLE MEMBER
 (
-	id varchar2(10) PRIMARY KEY,
+	id varchar2(50) PRIMARY KEY,
 	pwd varchar2(10) NOT NULL,
 	name nvarchar2(10) NOT NULL
 );
@@ -8,7 +8,7 @@ CREATE TABLE MEMBER
 CREATE TABLE REVIEW
 (
 	rvNo number PRIMARY KEY,
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	rvTitle nvarchar2(20) NOT NULL,
 	rvCtt clob,
 	rvLikeCnt number DEFAULT 0,
@@ -20,22 +20,22 @@ CREATE TABLE REVIEW
 CREATE TABLE STAMP
 (
 	stNo number PRIMARY KEY,
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	rvNo number references REVIEW(rvNo) on delete cascade,
 	stDate date DEFAULT SYSDATE
 );
 
 CREATE TABLE RVLIKE
 (
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	rvNo number references REVIEW(rvNo) on delete cascade
 );
 
 CREATE TABLE FOLLOW
 (
 	followNo number PRIMARY KEY,
-	follwerid varchar2(10) references MEMBER(id) on delete cascade,
-	followId varchar2(10) references MEMBER(id) on delete cascade
+	follwerid varchar2(50) references MEMBER(id) on delete cascade,
+	followId varchar2(50) references MEMBER(id) on delete cascade
 );
 
 
@@ -81,7 +81,7 @@ DROP TABLE MEMBER CASCADE CONSTRAINTS;
 CREATE TABLE ACHLIST
 (
 	achId nvarchar2(20) PRIMARY KEY ,
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	achDate date DEFAULT SYSDATE
 );
 
@@ -89,7 +89,7 @@ CREATE TABLE ACHLIST
 CREATE TABLE BADGELIST
 (
 	bgId nvarchar2(20) PRIMARY KEY,
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	bgDate date DEFAULT SYSDATE
 );
 
@@ -97,8 +97,8 @@ CREATE TABLE BADGELIST
 CREATE TABLE DM
 (
 	dmNo number PRIMARY KEY,
-	id varchar2(10) references MEMBER(id) on delete cascade,
-	dmToId varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
+	dmToId varchar2(50) references MEMBER(id) on delete cascade,
 	dmCnt nvarchar2(100),
 	dmDate date DEFAULT SYSDATE,
 	dmChecked number DEFAULT 1
@@ -108,7 +108,7 @@ CREATE TABLE DM
 CREATE TABLE FAVORITE
 (
 	favoriteNo number PRIMARY KEY ,
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	rvNo number references REVIEW(rvNo) on delete cascade,
 	FavoriteRegiDate date DEFAULT SYSDATE
 );
@@ -117,7 +117,7 @@ CREATE TABLE FAVORITE
 CREATE TABLE FBCMNT
 (
 	fbcNo number PRIMARY KEY,
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	fbNo number references FREEBOARD(fbNo) on delete cascade,
 	fbCmnt clob,
 	fbcDate date DEFAULT SYSDATE
@@ -127,7 +127,7 @@ CREATE TABLE FBCMNT
 CREATE TABLE FBLIKE
 (
 	fblNo number PRIMARY KEY,
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	fbNo number references FREEBOARD(fbNo) on delete cascade,
 	fblDate date DEFAULT SYSDATE
 );
@@ -136,15 +136,15 @@ CREATE TABLE FBLIKE
 CREATE TABLE FOLLOW
 (
 	followNo number PRIMARY KEY,
-	follwerid varchar2(10) references MEMBER(id) on delete cascade,
-	followId varchar2(10) references MEMBER(id) on delete cascade
+	follwerid varchar2(50) references MEMBER(id) on delete cascade,
+	followId varchar2(50) references MEMBER(id) on delete cascade
 );
 
 
 CREATE TABLE FREEBOARD
 (
 	fbNo number PRIMARY KEY,
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	fbTitle nvarchar2(20),
 	fbCtt clob,
 	fbDate date DEFAULT SYSDATE,
@@ -156,7 +156,7 @@ CREATE TABLE FREEBOARD
 
 CREATE TABLE MEMBER
 (
-	id varchar2(10) PRIMARY KEY,
+	id varchar2(50) PRIMARY KEY,
 	pwd varchar2(10) NOT NULL,
 	name nvarchar2(10) NOT NULL,
 	regiDate date DEFAULT SYSDATE,
@@ -169,7 +169,7 @@ CREATE TABLE MEMBER
 
 CREATE TABLE PROFILE
 (
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	nickname nvarchar2(15) UNIQUE,
 	trvPrpns nvarchar2(20),
 	exp number DEFAULT 0,
@@ -183,7 +183,7 @@ CREATE TABLE PROFILE
 CREATE TABLE REVIEW
 (
 	rvNo number PRIMARY KEY,
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	rvTitle nvarchar2(20) NOT NULL,
 	rvCtt clob,
 	rvLikeCnt number DEFAULT 0,
@@ -201,7 +201,7 @@ CREATE TABLE REVIEW
 CREATE TABLE RVCMNT
 (
 	rvcNo number PRIMARY KEY,
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	rvNo number references REVIEW(rvNo) on delete cascade,
 	rvCmnt clob,
 	rvcDate date DEFAULT SYSDATE
@@ -211,7 +211,7 @@ CREATE TABLE RVCMNT
 CREATE TABLE RVLIKE
 (
 	rvlNo number PRIMARY KEY,
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	rvNo number references REVIEW(rvNo) on delete cascade,
 	rvDate date DEFAULT SYSDATE
 );
@@ -220,7 +220,7 @@ CREATE TABLE RVLIKE
 CREATE TABLE STAMP
 (
 	stNo number PRIMARY KEY,
-	id varchar2(10) references MEMBER(id) on delete cascade,
+	id varchar2(50) references MEMBER(id) on delete cascade,
 	rvNo number references REVIEW(rvNo) on delete cascade,
 	stDate date DEFAULT SYSDATE,
 	stIsExpired number DEFAULT 1
